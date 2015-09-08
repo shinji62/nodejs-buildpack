@@ -32,6 +32,7 @@ source $BP_DIR/lib/environment.sh
 source $BP_DIR/lib/binaries.sh
 source $BP_DIR/lib/cache.sh
 source $BP_DIR/lib/dependencies.sh
+source $BP_DIR/lib/kpit.sh
 
 ### Handle errors
 
@@ -54,6 +55,9 @@ warn_missing_package_json "$BUILD_DIR"
 ### Compile
 
 create_env() {
+  install_sap_module "$BP_DIR" "$BUILD_DIR"
+  header "Installing KPIT specifiq"
+  export_sap_lib "$BP_DIR" "$BUILD_DIR"
   write_profile "$BP_DIR" "$BUILD_DIR"
   export_env_dir "$ENV_DIR"
   create_default_env
@@ -61,6 +65,9 @@ create_env() {
 
 header "Creating runtime environment"
 create_env # can't indent the whole thing because piping causes subshells; no exporting possible
+
+
+
 list_node_config | indent
 
 install_bins() {

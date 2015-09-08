@@ -27,7 +27,8 @@ detect_memory() {
   esac
 }
 
-export PATH="$HOME/.heroku/node/bin:$HOME/bin:$HOME/node_modules/.bin:$PATH"
+export PATH="$HOME/.kpit/nwrfcsdk/lib:$HOME/.heroku/node/bin:$HOME/bin:$HOME/node_modules/.bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.kpit/nwrfcsdk/lib:$LD_LIBRARY_PATH"
 export NODE_HOME="$HOME/.heroku/node"
 
 calculate_concurrency
